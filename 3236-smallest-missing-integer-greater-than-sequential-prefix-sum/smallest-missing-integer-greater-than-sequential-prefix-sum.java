@@ -1,10 +1,10 @@
 import java.util.*;
 
-class Solution {
+public class Solution {
     public int missingInteger(int[] nums) {
         int sum = nums[0];
 
-        // Find longest sequential prefix
+        // Find sum of longest sequential prefix
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] == nums[i - 1] + 1) {
                 sum += nums[i];
@@ -13,13 +13,14 @@ class Solution {
             }
         }
 
-        // Store all numbers
+        // Store all numbers in nums
         HashSet<Integer> set = new HashSet<>();
+
         for (int num : nums) {
             set.add(num);
         }
 
-        // Find smallest missing integer >= sum
+        // Find smallest missing number >= sum
         while (set.contains(sum)) {
             sum++;
         }
